@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes — Keep Your Thoughts</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">✦</div>
+      <span class="brand-name">noted.</span>
+    </div>
+
+    <div class="form-section">
+      <p class="section-label">Tulis Note</p>
+      <div class="input-group">
+        <input id="judul" type="text" placeholder="Judul note..." autocomplete="off">
+        <label for="judul">Judul</label>
+      </div>
+      <div class="input-group textarea-group">
+        <textarea id="isi" placeholder="Tulis isi note kamu..."></textarea>
+        <label for="isi">Isi</label>
+      </div>
+      <div class="form-actions">
+        <button class="btn-cancel" onclick="cancelEdit()" id="cancelBtn" style="display:none">Batal</button>
+        <button class="btn-save" onclick="submitNote()">
+          <span id="btnText">Simpan</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <span id="noteCount">0 notes</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 class="page-title">Semua Notes</h1>
+        <p class="page-sub">Klik note untuk lihat detail</p>
+      </div>
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Cari note..." oninput="filterNotes()">
+      </div>
+    </header>
+
+    <div class="notes-grid" id="notesGrid">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">✦</div>
+        <p>Belum ada notes.<br>Mulai tulis sesuatu!</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="detail-panel" id="detailPanel">
+    <button class="detail-close" onclick="closeDetail()">✕</button>
+    <div class="detail-content" id="detailContent"></div>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closeDetail()"></div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
